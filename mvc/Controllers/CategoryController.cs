@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using EntityLayer.concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,20 @@ namespace mvc.Controllers
                 var categoryvalues = cm.GetAllBl();
             return View(categoryvalues);
             }
+
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
         }
+
+        [HttpPost] // BİR BUTONA BASTIGIM ZAMAN HERHANGİ BİR ŞEY OLDUGU ZAMAN ÇALIŞMASI İÇİN KULLANIYORUZ. bir attiributestir 
+        public ActionResult AddCategory(Category p)
+        {
+            cm.CategoryAddBL(p);
+            return RedirectToAction("GetCatgoryList");
+        }
+        
+        
+    }
     }
